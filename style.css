@@ -254,3 +254,13 @@ h1 {
   animation: 4s opacity-anim;
   display: none;
 }
+.modal {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  left: 0;
+  top: 0;
+  z-index: 100;
+  width: 100vw;
+  height: 100%;
+}
