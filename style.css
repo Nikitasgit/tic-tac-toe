@@ -1,22 +1,106 @@
+@keyframes left-to-right {
+  0% {
+    transform: translateX(-2000px);
+  }
+  50% {
+    transform: translateX(70px);
+  }
+  75% {
+    transform: translateX(-50px);
+  }
+  100% {
+    transform: translateX(0px);
+  }
+}
+@keyframes up-and-down {
+  0% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes opacity-anim {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 100%;
+  }
+}
+@keyframes top-to-bottom {
+  0% {
+    transform: translateY(-200px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+@keyframes right-to-left {
+  0% {
+    transform: translateX(2000px);
+  }
+  50% {
+    transform: translateX(-70px);
+  }
+  75% {
+    transform: translateX(50px);
+  }
+  100% {
+    transform: translateX(0px);
+  }
+}
+@keyframes bg-color {
+  0% {
+    background: #502d59;
+  }
+  25% {
+    background: #64396f;
+  }
+  50% {
+    background: #2b1830;
+  }
+  75% {
+    background: #72407e;
+  }
+  100% {
+    background: #251529;
+  }
+}
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  color: white;
+  letter-spacing: 1px;
+  font-family: "chakraPetch-medium";
+  user-select: none;
+}
+@font-face {
+  font-family: "chakraPetch-medium";
+  src: url(./assets/fonts/ChakraPetch-Medium.ttf);
 }
 body {
   height: 100vh;
+  padding: 20px 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  background: url("./assets/clouds.jpg") fixed center/cover;
+  overflow: hidden;
 }
+
 .game {
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 20px;
+  align-items: center;
 }
 h1 {
   text-align: center;
+  animation: top-to-bottom 0.5s;
 }
 #scoreboard {
   display: flex;
@@ -30,31 +114,143 @@ h1 {
   display: flex;
   flex-direction: column;
 }
+
 .player {
   display: flex;
   gap: 10px;
+  align-items: flex-end;
+}
+.player-1 {
+  animation: 0.5s left-to-right;
+}
+.draw {
+  animation: top-to-bottom 0.5s;
+}
+.player-2 {
+  animation: 0.5s right-to-left;
+}
+.marker {
+  font-size: 5rem;
 }
 #gameboard {
   display: grid;
   grid-template-columns: 175px 175px 175px;
   grid-template-rows: 175px 175px 175px;
   border-radius: 20px;
+  gap: 5px;
 }
+@media screen and (max-width: 558px) {
+  #gameboard {
+    grid-template-columns: 110px 110px 110px;
+    grid-template-rows: 110px 110px 110px;
+  }
+  .marker {
+    font-size: 4rem;
+  }
+  .player-name {
+    display: none;
+  }
+}
+@media screen and (max-height: 740px) {
+  #gameboard {
+    grid-template-columns: 110px 110px 110px;
+    grid-template-rows: 110px 110px 110px;
+  }
+  .marker {
+    font-size: 4rem;
+  }
+  .player-name {
+    display: none;
+  }
+}
+@media screen and (max-width: 460px) {
+  #gameboard {
+    grid-template-columns: 90px 90px 90px;
+    grid-template-rows: 90px 90px 90px;
+  }
+  .marker {
+    font-size: 3rem;
+  }
+  #round-winner {
+    font-size: 2rem;
+    text-align: center;
+  }
+}
+@media screen and (max-height: 560px) {
+  #gameboard {
+    grid-template-columns: 90px 90px 90px;
+    grid-template-rows: 90px 90px 90px;
+  }
+  .marker {
+    font-size: 3rem;
+  }
+  #round-winner {
+    font-size: 2rem;
+    text-align: center;
+  }
+}
+
 .cell {
-  background: #aaaaaa;
+  background: #502d59;
   border: 1px solid white;
   border-radius: 15px;
   cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: 0.3s;
 }
-.marker {
-  font-size: 5rem;
+[id="1"] {
+  animation: 7s 0.1s infinite alternate bg-color;
 }
+[id="2"] {
+  animation: 7s 0.2s infinite alternate bg-color;
+}
+[id="3"] {
+  animation: 7s 0.3s infinite alternate bg-color;
+}
+[id="4"] {
+  animation: 7s 0.4s infinite alternate bg-color;
+}
+[id="5"] {
+  animation: 7s 0.5s infinite alternate bg-color;
+}
+[id="6"] {
+  animation: 7s 0.6s infinite alternate bg-color;
+}
+[id="7"] {
+  animation: 7s 0.7s infinite alternate bg-color;
+}
+[id="8"] {
+  animation: 7s 0.8s infinite alternate bg-color;
+}
+[id="9"] {
+  animation: 7s 0.9s infinite alternate bg-color;
+}
+
 #restart-btn {
   width: 120px;
   padding: 15px;
   border-radius: 10px;
   margin: 0 auto;
+  transition: 0.5s;
+  cursor: pointer;
+  font-size: 1.1rem;
+  animation: 2s opacity-anim;
+  background: #272727;
+}
+#restart-btn:hover {
+  background: #881919;
+  color: white;
+}
+#round-winner {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  padding: 20px 10px;
+  border-radius: 10px;
+  background: #222268;
+  transform: translate(-50%, -50%);
+  animation: 4s opacity-anim;
+  display: none;
 }
