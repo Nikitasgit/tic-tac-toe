@@ -7,15 +7,19 @@
     <title>Document</title>
   </head>
   <body>
-    <!--     <div class="modal">
-      <h1>Mages Battle</h1>
-      <button>Human VS AI</button>
-      <button>Human VS Human</button>
-    </div> -->
+    <div class="modal">
+      <video id="video" src="./assets/bg-video.mp4" autoplay loop muted></video>
 
-    <div class="game">
+      <div id="modal-box">
+        <h1>Mages Battle</h1>
+        <button id="player-ai-btn" class="button">Player VS AI</button>
+        <button id="player-player-btn" class="button">Player VS Player</button>
+      </div>
+    </div>
+
+    <div class="game hidden">
       <h2 id="round-winner"></h2>
-      <h1>Mages Battle</h1>
+      <h1 id="title">Mages Battle</h1>
       <div id="scoreboard">
         <div class="player-and-trophies player-1">
           <div class="trophies-1"></div>
